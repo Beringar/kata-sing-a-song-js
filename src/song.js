@@ -1,46 +1,51 @@
 "use strict";
 
-const song = `There was an old lady who swallowed a fly.
-I don't know why she swallowed a fly - perhaps she'll die!
+/* Kata Sing-a-Song by Volcanic Internet. November 2022, Monday 21st, 19pm  
+Team of devs: Oleguer, Laura y Berenguer */
 
-There was an old lady who swallowed a spider;
+const animals = ["fly", "spider", "bird", "cat", "dog", "cow", "horse"];
+const getSwallowedLine = (firstAnimal, secondAnimal) => `She swallowed the ${firstAnimal} to catch the ${secondAnimal}`;
+const iDontKnow = `I don't know why she swallowed a ${animals[0]} - perhaps she'll die!`;
+const thereWasAnOldLady = (animal) => `There was an old lady who swallowed a ${animal};`;
+const chorus = (n) => {
+  let chorusLines = "";
+  for (let i = n; i > 0; i--) {
+    chorusLines += getSwallowedLine(animals[i], animals[i - 1]) + (i === 1 ? ";" : ",\n");
+  }
+  return chorusLines;
+};
+
+const song = `There was an old lady who swallowed a ${animals[0]}.
+${iDontKnow}
+
+${thereWasAnOldLady(animals[1])}
 That wriggled and wiggled and tickled inside her.
-She swallowed the spider to catch the fly;
-I don't know why she swallowed a fly - perhaps she'll die!
+${chorus(1)}
+${iDontKnow}
 
-There was an old lady who swallowed a bird;
-How absurd to swallow a bird.
-She swallowed the bird to catch the spider,
-She swallowed the spider to catch the fly;
-I don't know why she swallowed a fly - perhaps she'll die!
+${thereWasAnOldLady(animals[2])}
+How absurd to swallow a ${animals[2]}.
+${chorus(2)}
+${iDontKnow}
 
-There was an old lady who swallowed a cat;
-Fancy that to swallow a cat!
-She swallowed the cat to catch the bird,
-She swallowed the bird to catch the spider,
-She swallowed the spider to catch the fly;
-I don't know why she swallowed a fly - perhaps she'll die!
+${thereWasAnOldLady(animals[3])}
+Fancy that to swallow a ${animals[3]}!
+${chorus(3)}
+${iDontKnow}
 
-There was an old lady who swallowed a dog;
-What a hog, to swallow a dog!
-She swallowed the dog to catch the cat,
-She swallowed the cat to catch the bird,
-She swallowed the bird to catch the spider,
-She swallowed the spider to catch the fly;
-I don't know why she swallowed a fly - perhaps she'll die!
+${thereWasAnOldLady(animals[4])}
+What a hog, to swallow a ${animals[4]}!
+${chorus(4)}
+${iDontKnow}
 
-There was an old lady who swallowed a cow;
-I don't know how she swallowed a cow!
-She swallowed the cow to catch the dog,
-She swallowed the dog to catch the cat,
-She swallowed the cat to catch the bird,
-She swallowed the bird to catch the spider,
-She swallowed the spider to catch the fly;
-I don't know why she swallowed a fly - perhaps she'll die!
+${thereWasAnOldLady(animals[5])}
+I don't know how she swallowed a ${animals[5]}!
+${chorus(5)}
+${iDontKnow}
 
-There was an old lady who swallowed a horse...
+There was an old lady who swallowed a ${animals[6]}...
 ...She's dead, of course!`;
 
-console.log(song);
+// console.log(song);
 
-module.exports = {};
+module.exports = song;
